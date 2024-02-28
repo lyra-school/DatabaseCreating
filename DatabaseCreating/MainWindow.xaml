@@ -1,0 +1,34 @@
+﻿<Window x:Class="DatabaseCreating.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DatabaseCreating"
+        mc:Ignorable="d"
+        Background="{DynamicResource MaterialDesignPaper}"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
+    <Window.Resources>
+        <DataTemplate x:Key="bandsDt">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="{Binding Path=BandImage}" Width="50" />
+                <TextBlock Text="{Binding Path=Name}" FontSize="18" Margin="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            </StackPanel>
+        </DataTemplate>
+        <DataTemplate x:Key="albumsDt">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="{Binding Path=BandImage}" Width="50" />
+                <TextBlock Text="{Binding Path=Name}" FontSize="18" Margin="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            </StackPanel>
+        </DataTemplate>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <ListBox x:Name="bandsLbx" Margin="20" SelectedValuePath="Id" SelectionChanged="bandsLbx_SelectionChanged" ItemTemplate="{StaticResource bandsDt}"/>
+        <ListBox x:Name="albumsLbx" Margin="20" Grid.Column="1"/>
+    </Grid>
+</Window>
